@@ -1,0 +1,36 @@
+{
+    "name": "cyber-root0/retrofix",
+    "description": "Retroflix Sistema de Aluguel de filmes online",
+    "type": "project",
+    "require": {
+      "php": ">=8.1"
+    },
+    "license": "proprietary",
+    "authors": [
+      {
+        "name": "Bruno Alves",
+        "email": "boteistem@gmail.com"
+      },
+      {
+        "name" : "Gabriel Simionato",
+        "email" : "gabriel252004@outlook.com"
+      },
+      {
+        "name" : "Gracielle Ferreira",
+        "email": "gracielle.gfo.oliveira@gmail.com"
+      },
+      {
+        "name" : "Franciele Mota",
+        "email": "francielli.mota@fatec.sp.gov.br"
+      },
+      {
+        "name" : "Gabriel Claro",
+        "email": "gabrielbrandao079@gmail.com"
+      }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Retroflix\\": "app/"        
+        }
+    }
+  }
