@@ -7,8 +7,8 @@ use Retroflix\Entity\Entity;
  */
 class Cliente extends Entity{
 
-    public string $nomee;
-    public string $sobrenomee;
+    public string $nome;
+    public string $sobrenome;
     public float $valor; 
 
 }

@@ -6,4 +6,14 @@ namespace Retroflix\Entity;
  */
 abstract class Entity{
     public int $id;
+
+    public function __set($nome, $valor) {
+        if (property_exists($this, $nome)) {
+            $this->$nome = $valor;
+        } else {
+           $class_name = get_called_class();
+            throw new \Exception("Atributo $nome não existe na classe {$class_name} ");
+        }
+    }
+
 }

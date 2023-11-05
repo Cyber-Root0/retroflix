@@ -13,12 +13,12 @@ $cliente = new Retroflix\Entity\cliente\Cliente();
 
 $cliente->nome = "Gabriel";
 $cliente->valor = 451;
+$cliente->sobrenome = "aaaa";
+//$banco = new Retroflix\db\DB();
+//$clientes = $banco->execute("SELECT * FROM teste");
+//var_dump($clientes->fetchAll());
 
-$banco = new Retroflix\db\DB();
-$clientes = $banco->execute("SELECT * FROM teste");
-var_dump($clientes->fetchAll());
-
-//$ClientModel->create($cliente);
+$ClientModel->create($cliente);
 //var_dump( $ClientModel->find($cliente)  );
 
 
