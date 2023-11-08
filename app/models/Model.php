@@ -26,127 +26,41 @@ abstract class Model implements ModelInterface{
      * @param  int $id
      * @return \InvalidArgumentException | array | bool
      */
-    public function get(int $id) : \InvalidArgumentException | array | bool{
-        
-        if ($id === null || empty($id) || gettype($id) != "integer"){
-            throw new \InvalidArgumentException("O registro não pode ser atualizado, id do objeto Entity {$this->table} inválido ou inexistente");
-        }
-
-        return $this->DB->prepare("SELECT * FROM {$this->table} WHERE id = ?", [$id])->fetch(\PDO::FETCH_ASSOC);
-
-    }
+    abstract public function get(int $id) : \InvalidArgumentException | array | bool;
     /**
      * Criar um novo registro com base nos dados da Entity
      *
      * @param  Entity $entity
      * @return bool
      */
-    public function create(Entity $entity) : bool{
-
-        $attr = [];
-        $values = [];
-        foreach($entity as $key => $value){
-
-            $attr[] = $key;
-            $values[] =  $value;
-
-        }
-        
-        $Abstractfields = implode(', ', $attr);
-        $Abstractsvalues = implode(', ', array_fill(0, count($values),'?'));
-        $out = $this->DB->prepare("INSERT INTO {$this->table} ({$Abstractfields}) VALUES ({$Abstractsvalues})", $values);
-        
-        return $out->rowCount() > 0;
-
-    }
+    abstract public function create(Entity $entity) : bool;
     /**
      * Apagar um registro com base no ID
      *
      * @param  mixed $id
      * @return bool
      */
-    public function delete(int $id): bool{
-        
-        $out = $this->DB->prepare("DELETE FROM {$this->table} WHERE id = ?", [$id]);
-        if ($out->rowCount() > 0) {
-            return true;
-        }
-
-        return false;
-
-    }
+    abstract public function delete(int $id): bool;
     /**
      * Função para encontrar dados da tabela extendida 
      *
      * @param  Entity $entity
      * @return array | false
      */
-    public function find(Entity $entity) : array | false{
-
-        $attr = [];
-        $values = [];
-
-        foreach($entity as $key => $value){
-            if ( $value === null || empty($value) ){
-                continue;
-            }
-
-            $attr[] = $key;
-            $values[] = $value;
-        }
-
-        if (count($values) <= 0) {
-            return false;
-        }
-
-        $Abstractfields = implode("= ? AND ", $attr)."= ?";
-        $out = $this->DB->prepare("SELECT * FROM {$this->table} WHERE {$Abstractfields}", $values);
-        return $out->fetchAll(\PDO::FETCH_ASSOC);
-
-    }
+    abstract public function find(Entity $entity) : array | false;
     /**
      * Função para atualizar registro com base no ID da Entity
      *
      * @param  Entity $entity
      * @return \Exception | bool
      */
-    public function update(Entity $entity) : \Exception | bool{
-        
-        if ( !isset($entity->id) || empty($entity->id) || gettype($entity->id) != "integer"){
-            throw new \InvalidArgumentException("O registro não pode ser atualizado, id do objeto Entity {$this->table} inválido ou inexistente");
-        }
-
-        $attr = [];
-        $values = [];
-        foreach($entity as $key => $value){
-
-            $attr[] = $key;
-            $values[] = $value;
-
-        }
-
-        $Abstractfields = implode("= ?,", $attr)."= ?";
-        $values[count($values)] = $entity->id;
-
-        $out = $this->DB->prepare("UPDATE {$this->table} SET {$Abstractfields} WHERE id = ?", $values);
-
-        if ($out->rowCount() > 0) {
-            return true;
-        }
-
-        return false;
-
-    }    
+    abstract public function update(Entity $entity) : \Exception | bool;
     /**
      * Pegar todos os registro da tabela
      *
      * @return array
      */
-    public function getAll(){
-
-        return $this->DB->execute("SELECT * FROM {$this->table}")->fetchAll();
-
-    }
+    abstract public function getAll();
 }
 
 

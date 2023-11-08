@@ -32,8 +32,5 @@
         "psr-4": {
             "Retroflix\\": "app/"        
         }
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "*"
     }
 }
