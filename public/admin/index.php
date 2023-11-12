@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body class="bg-light">
     <div class="container-fluid">
         <div class="row flex-nowrap">
@@ -56,12 +58,7 @@
                         <!-- Funções fundamentais -->
                         <li class="nav-item w-100">
                             <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi bi-camera-reels"></i> <span class="ms-1 d-none d-sm-inline">Locar filme</span>
-                            </a>
-                        </li>
-                        <li class="nav-item w-100">
-                            <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi bi-cash"></i> <span class="ms-1 d-none d-sm-inline">Realizar pagamento</span>
+                                <i class="fs-4 bi bi-camera-reels"></i> <span class="ms-1 d-none d-sm-inline">Locações</span>
                             </a>
                         </li>
                 </div>
@@ -113,63 +110,64 @@
                     <div class="shadow-sm">
                         <table class="table table-hover  rounded">
                             <thead class="bg-white">
-                              <tr>
-                                <th scope="col">Cliente</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Forma pagamento</th>
-                                <th scope="col">Total</th>
-                              </tr>
+                                <tr>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Forma pagamento</th>
+                                    <th scope="col">Total</th>
+                                </tr>
                             </thead>
                             <tbody class="">
-                              <tr>
-                                <td scope="row">Bruno Alves</td>
-                                <td>05/11/2023</td>
-                                <td>Pago</td>
-                                <td>Cartão de Crédito</td>
-                                <td>R$ 17,80</td>
-                              </tr>
-                              <tr>
-                                <td scope="row">Gabriel Brandão</td>
-                                <td>04/11/2023</td>
-                                <td>Pago</td>
-                                <td>Cartão de Débito</td>
-                                <td>R$ 22,40</td>
-                              </tr>
-                              <tr>
-                                <td scope="row">Gracielle</td>
-                                <td>03/11/2023</td>
-                                <td>Pendente</td>
-                                <td>Boleto</td>
-                                <td>R$ 18,20</td>
-                              </tr>
-                              <tr>
-                                <td scope="row">Francielle</td>
-                                <td>01/11/2023</td>
-                                <td>Pago</td>
-                                <td>Cartão de Débito</td>
-                                <td>R$ 28,99</td>
-                              </tr>
+                                <tr>
+                                    <td scope="row">Bruno Alves</td>
+                                    <td>05/11/2023</td>
+                                    <td>Pago</td>
+                                    <td>Cartão de Crédito</td>
+                                    <td>R$ 17,80</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Gabriel Brandão</td>
+                                    <td>04/11/2023</td>
+                                    <td>Pago</td>
+                                    <td>Cartão de Débito</td>
+                                    <td>R$ 22,40</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Gracielle</td>
+                                    <td>03/11/2023</td>
+                                    <td>Pendente</td>
+                                    <td>Boleto</td>
+                                    <td>R$ 18,20</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Francielle</td>
+                                    <td>01/11/2023</td>
+                                    <td>Pago</td>
+                                    <td>Cartão de Débito</td>
+                                    <td>R$ 28,99</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                          <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                          </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
                         </ul>
-                      </nav>
+                    </nav>
                 </div>
             </div>
 
         </div>
     </div>
 </body>
+
 </html>
