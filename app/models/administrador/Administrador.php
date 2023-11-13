@@ -17,7 +17,7 @@ class Administrador extends Model{
     public function create(Entity $entity) : bool{
         $pdo = $this->DB->execute("INSERT INTO $this->table (nome, email, senha, cpf, telefone, sexo, data_nascimento) 
             VALUES 
-            ( '{$entity->nome}', '{$entity->email}', '{$entity->senha}', '{$entity->cpf}', '{$entity->telefone}', '{$entity->sexo}', '{$entity->data_nascimento}')"
+            ( '{$entity->nome}', '{$entity->email}', '{$entity->senha}', '{$entity->cpf}', '{$entity->telefone}', '{$entity->sexo}', '{$entity->data_nascimento->format('Y-m-d')}')"
             );
         
         if ($pdo->rowCount() > 0) {

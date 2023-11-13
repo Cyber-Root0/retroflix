@@ -15,6 +15,7 @@
     $administrador->telefone = "(99) 99999-9999";
     $administrador->sexo = "m";
     $administrador->data_nascimento = new DateTime("2023-12-11");
+   
 
     $administradorModel = new Administrador();
     $result = $administradorModel->create($administrador);
