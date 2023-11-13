@@ -1,5 +1,27 @@
-<!DOCTYPE html>
 
+<?php
+
+    require __DIR__."/../../../../vendor/autoload.php";
+    require __DIR__."/../../../../app/config/config.php";
+
+    use Retroflix\models\administrador\Administrador;
+    use Retroflix\Entity\administrador\Administrador as AdministradorEntity;
+
+    $administrador = new AdministradorEntity();
+    $administrador->nome = "Gabriel";
+    $administrador->email = "gabriel252004@outlook.com";
+    $administrador->senha = "senha1234";
+    $administrador->cpf = "999.999.999-99";
+    $administrador->telefone = "(99) 99999-9999";
+    $administrador->sexo = "m";
+    $administrador->data_nascimento = new DateTime("2023-12-11");
+
+    $administradorModel = new Administrador();
+    $result = $administradorModel->create($administrador);
+    var_dump($result);
+?>
+
+<!DOCTYPE html>
 <body>
     <!-- Body -->
     <div class="container-fluid">
