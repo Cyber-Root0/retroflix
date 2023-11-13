@@ -7,16 +7,16 @@ interface ModelInterface{
  * get
  *
  * @param  int $id
- * @return \InvalidArgumentException | array | bool
+ * @return array
  */
-public function get(int $id ) : \InvalidArgumentException | array | bool;
+public function get(int $id ) : array;
 /**
  * find
  *
  * @param  Entity $entity
- * @return array | false
+ * @return array
  */
-public function find(Entity $entity) : array | false;
+public function find(Entity $entity) : array;
 /**
  * create
  *
@@ -28,9 +28,9 @@ public function create(Entity $entity ) : bool;
  * update
  *
  * @param  Entity $entity
- * @return \Exception | bool
+ * @return bool
  */
-public function update(Entity $entity) : \Exception | bool;
+public function update(Entity $entity) : bool;
 /**
  * delete
  *

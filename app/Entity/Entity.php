@@ -5,8 +5,6 @@ namespace Retroflix\Entity;
  * Entity - representa as os atributos e tipos da tabela
  */
 abstract class Entity{
-    public int $id;
-
     public function __set($nome, $valor) {
         if (property_exists($this, $nome)) {
             $this->$nome = $valor;

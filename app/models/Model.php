@@ -24,9 +24,9 @@ abstract class Model implements ModelInterface{
      * Pegar um registro com base em um ID especificado
      *
      * @param  int $id
-     * @return \InvalidArgumentException | array | bool
+     * @return array
      */
-    abstract public function get(int $id) : \InvalidArgumentException | array | bool;
+    abstract public function get(int $id) : array;
     /**
      * Criar um novo registro com base nos dados da Entity
      *
@@ -45,16 +45,16 @@ abstract class Model implements ModelInterface{
      * Função para encontrar dados da tabela extendida 
      *
      * @param  Entity $entity
-     * @return array | false
+     * @return array
      */
-    abstract public function find(Entity $entity) : array | false;
+    abstract public function find(Entity $entity) : array;
     /**
      * Função para atualizar registro com base no ID da Entity
      *
      * @param  Entity $entity
-     * @return \Exception | bool
+     * @return bool
      */
-    abstract public function update(Entity $entity) : \Exception | bool;
+    abstract public function update(Entity $entity) : bool;
     /**
      * Pegar todos os registro da tabela
      *
