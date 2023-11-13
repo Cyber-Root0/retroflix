@@ -38,7 +38,7 @@ class DB{
      * @param string $sql
      * @return \PDOStatement | false
      */
-    public function execute(string $sql): \PDOStatement | false{
+    public function execute(string $sql){
 
         try{
             return $this->connection->query($sql);
