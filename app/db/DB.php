@@ -1,7 +1,6 @@
 <?php
 namespace Retroflix\db;
-use Retroflix\interfaces\MysqlConnection;
-class DB implements MysqlConnection{
+class DB{
     /**
      * fieldsType
      *
@@ -34,33 +33,6 @@ class DB implements MysqlConnection{
 
     }
     /**
-     * Usa o prepare do PDO, definindo os parametros da Query com seus devidos tipos
-     *
-     * @param  string $abstractSql
-     * @param  array $values
-     * @return \PDOStatement | false
-     */
-    public function prepare(string $abstractSql, array $values = []) : \PDOStatement | false{
-
-       $stmt =  $this->connection->prepare($abstractSql);
-        
-       $finalValues = array();
-
-       foreach($values as $key => $value){
-            
-             $stmt->bindValue($key+1, $value, $this->objectType($value));   
-       }
-       try{   
-            $stmt->execute();
-            
-            return $stmt;
-        }catch(\PDOException $e){
-            echo $e->getMessage();
-            return false;
-        }
-        
-    }
-    /**
      * Executa uma string SQl direta e retorna ObjetoPDO
      *
      * @param string $sql
@@ -75,17 +47,6 @@ class DB implements MysqlConnection{
             return false;
         }
        
-    }
-    /**
-     * Retorna o tipo da variavel
-     *
-     * @param  mixed $var
-     * @return int
-     */
-    private function objectType($var){
-
-        return $this->fieldsType[gettype($var)];
-
     }
     /**
      * Finaliza a conexão PDO após destruição da classe
