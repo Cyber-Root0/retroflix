@@ -1,25 +1,23 @@
 
 <?php
-
     require __DIR__."/../../../../vendor/autoload.php";
     require __DIR__."/../../../../app/config/config.php";
 
     use Retroflix\models\administrador\Administrador;
     use Retroflix\Entity\administrador\Administrador as AdministradorEntity;
+    $administrador = new Administrador();
+    $administradorEntity = new AdministradorEntity();
 
-    $administrador = new AdministradorEntity();
-    $administrador->nome = "Gabriel";
-    $administrador->email = "gabriel252004@outlook.com";
-    $administrador->senha = "senha1234";
-    $administrador->cpf = "999.999.999-99";
-    $administrador->telefone = "(99) 99999-9999";
-    $administrador->sexo = "m";
-    $administrador->data_nascimento = new DateTime("2023-12-11");
-   
+    if ($_SERVER['REQUEST_METHOD'] == "POST" ){
 
-    $administradorModel = new Administrador();
-    $result = $administradorModel->create($administrador);
-    var_dump($result);
+        $administradorEntity->nome = $_POST["filtro"];
+    
+        $administradores = $administrador->find($administradorEntity);
+    }
+    else{
+        $administradores = $administrador->getAll();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +52,7 @@
                                 <div class="div d-flex justify-content-between mb-3">
                                     <div class="d-flex flex-row align-items-center">
                                         <p class="m-0 flex-fill">Filtrar por:</p>
-                                        <input type="text" class="form-control w-100" name="" id="">
+                                        <input type="text" class="form-control w-100" name="filtro" id="">
                                     </div>
                                     <div class="div">
                                         <a href="create.php" class="btn btn-primary">Cadastrar administrador</a>
@@ -63,6 +61,7 @@
                                 <table class="table table-hover rounded">
                                     <thead class="bg-dark text-white">
                                         <tr>
+                                            <th scope="col">Código</th>
                                             <th scope="col">Nome</th>
                                             <th scope="col">E-mail</th>
                                             <th scope="col">CPF</th>
@@ -74,58 +73,24 @@
                                         </tr>
                                     </thead>
                                     <tbody class="">
+                                        <?php foreach($administradores as $administrador) { ?>
                                         <tr>
-                                            <td scope="row">Gabriel Simionato</td>
-                                            <td>gabriel252004@outlook.com</td>
-                                            <td>999.999.999-99</td>
-                                            <td>(99) 99999-9999</td>
-                                            <td>Masculino</td>
-                                            <td>25/04/2004</td>
-                                            <td>exemploSenhaADM123!@</td>
+                                            <td scope="row"><?= $administrador['codigo'] ?></td>
+                                            <td scope="row"><?= $administrador['nome'] ?></td>
+                                            <td><?= $administrador['email'] ?></td>
+                                            <td><?= $administrador['cpf'] ?></td>
+                                            <td><?= $administrador['telefone'] ?></td>
+                                            <td><?= $administrador['sexo'] ?></td>
+                                            <td><?= $administrador['data_nascimento'] ?></td>
+                                            <td><?= $administrador['senha'] ?></td>
                                             <td>
-                                                <a class="btn btn-outline-primary btn-sm ml-2"><i class="fas fa-edit"></i> Alterar</a>
-                                                <a type="button" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-trash-alt"></i> Excluir</a>
+                                                <a class="btn btn-outline-primary btn-sm ml-2" href="update.php?codigo=<?= $administrador['codigo'] ?>">
+                                                    <i class="fas fa-edit"></i> Alterar
+                                                </a>
+                                                <a type="button" class="btn btn-outline-danger btn-sm ml-2" href="delete.php?codigo=<?= $administrador['codigo'] ?>"><i class="fas fa-trash-alt"></i> Excluir</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td scope="row">Gabriel Brandão</td>
-                                            <td>brandao@outlook.com</td>
-                                            <td>999.999.999-99</td>
-                                            <td>(99) 99999-9999</td>
-                                            <td>Masculino</td>
-                                            <td>25/04/2004</td>
-                                            <td>exemploSenhaADM123!@</td>
-                                            <td>
-                                                <a class="btn btn-outline-primary btn-sm ml-2"><i class="fas fa-edit"></i> Alterar</a>
-                                                <a type="button" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-trash-alt"></i> Excluir</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">Gracielle</td>
-                                            <td>graci@outlook.com</td>
-                                            <td>999.999.999-99</td>
-                                            <td>(99) 99999-9999</td>
-                                            <td>Masculino</td>
-                                            <td>25/04/2004</td>
-                                            <td>exemploSenhaADM123!@</td>
-                                            <td>
-                                                <a class="btn btn-outline-primary btn-sm"><i class="fas fa-edit"></i> Alterar</a>
-                                                <a type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i> Excluir</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">Francielle</td>
-                                            <td>fran@outlook.com</td>
-                                            <td>999.999.999-99</td>
-                                            <td>(99) 99999-9999</td>
-                                            <td>Masculino</td>
-                                            <td>25/04/2004</td>
-                                            <td>exemploSenhaADM123!@</td>
-                                            <td>
-                                                <a class="btn btn-outline-primary btn-sm ml-2"><i class="fas fa-edit"></i> Alterar</a>
-                                                <a type="button" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-trash-alt"></i> Excluir</a>
-                                            </td>
-                                        </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

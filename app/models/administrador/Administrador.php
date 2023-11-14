@@ -11,6 +11,11 @@ class Administrador extends Model{
     protected string $table = "administrador";
 
     public function get(int $id) : array {
+        $pdo = $this->DB->execute("SELECT * FROM $this->table WHERE codigo = $id");
+
+        if ( $pdo->rowCount() > 0) {
+            return $pdo->fetch(\PDO::FETCH_ASSOC);
+           }
         return [];
     }
 
@@ -28,10 +33,21 @@ class Administrador extends Model{
     }
 
     public function delete(int $id): bool {
-        return true;
+        $pdo = $this->DB->execute("DELETE FROM $this->table WHERE codigo = $id");
+        if ( $pdo->rowCount() > 0) {
+            return true;
+           }
+    
+        return false;
     }
 
     public function find(Entity $entity) : array {
+        $pdo =  $this->DB->execute("SELECT * FROM $this->table WHERE nome LIKE '%{$entity->nome}%' ");
+
+        if ( $pdo->rowCount() > 0) {
+            return $pdo->fetchAll(\PDO::FETCH_ASSOC);
+        }
+ 
         return [];
     }
 
@@ -40,6 +56,12 @@ class Administrador extends Model{
     }
 
     public function getAll() : array  {
+        $pdo = $this->DB->execute("SELECT * FROM $this->table");
+
+        if ( $pdo->rowCount() > 0) {
+            return $pdo->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
         return [];
     }
 

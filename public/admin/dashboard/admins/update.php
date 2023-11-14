@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<!-- Pendências: transformar o char do sexo em Feminino e Masculino e ajustar a aparição no update-->
+
 <?php
     require __DIR__."/../../../../vendor/autoload.php";
     require __DIR__."/../../../../app/config/config.php";
@@ -7,37 +9,50 @@
     use Retroflix\models\administrador\Administrador;
     use Retroflix\Entity\administrador\Administrador as AdministradorEntity;
 
-    if(isset($_POST["cadastrar"])) {
 
-        $nome = $_POST["nome"];
-        $email = $_POST["email"];
-        $senha = $_POST["senha"];
-        $cpf = $_POST["cpf"];
-        $telefone = $_POST["telefone"];
-        $sexo = $_POST["sexo"];
-        $data_nascimento = new DateTime($_POST["dtNascimento"]);
-
+    if (isset($_GET["codigo"])) {
+        $idAdministrador = $_GET['codigo'];
+        $administrador = new Administrador();
+        $dados_administrador =  $administrador->get($idAdministrador);
         
 
-
-        $administrador = new AdministradorEntity();
-        $administrador->nome = $nome;
-        $administrador->email = $email;
-        $administrador->senha = $senha;
-        $administrador->cpf = $cpf;
-        $administrador->telefone = $telefone;
-        $administrador->sexo = $sexo;
-        $administrador->data_nascimento = $data_nascimento;
-
-        $administradorModel = new Administrador();
-        $result = $administradorModel->create($administrador);
-
-        if ($result){
+        if (!count($dados_administrador) > 0){
             header("Location: /admin/dashboard/admins/");
         }
 
     }
 
+    if ( $_SERVER['REQUEST_METHOD'] == "POST" ){
+
+        $administrador = new Administrador();
+        $EntityAdministrador = new AdministradorEntity();
+    
+        $idAdministrador = $_GET['codigo'];
+        $nomeAdministrador = $_POST['nome'];
+        $emailAdministrador = $_POST['email'];
+        $cpfAdministrador = $_POST['cpf'];
+        $telefoneAdministrador = $_POST['telefone'];
+        $sexoAdministrador = $_POST['sexo'];
+        $dataNascimentoAdministrador = new DateTime($_POST["dtNascimento"]);
+        $senhaAdministrador = $_POST['senha'];
+    
+        $EntityAdministrador->codigo = $idAdministrador;
+        $EntityAdministrador->nome = $nomeAdministrador;
+        $EntityAdministrador->email = $emailAdministrador;
+        $EntityAdministrador->senha = $senhaAdministrador;
+        $EntityAdministrador->cpf = $cpfAdministrador;
+        $EntityAdministrador->telefone = $telefoneAdministrador;
+        $EntityAdministrador->sexo = $sexoAdministrador;
+        $EntityAdministrador->data_nascimento = $dataNascimentoAdministrador;
+        
+        $result = $administrador->update($EntityAdministrador);
+        if ($result) {
+            header('Location: /admin/dashboard/admins/');
+        }else{
+            echo "não foi possivel atualizar o registro";
+        }
+    
+    }
 
 ?>
 
@@ -66,7 +81,7 @@
 
                         <!-- Título -->
                         <div class="title pb-2">
-                            <h3>Cadastrar</h3>
+                            <h3>Alterar</h3>
                         </div>
 
                         <!-- Container formulário -->
@@ -75,17 +90,17 @@
                             <div class="row">
                                 <div class="form-group col-md-3 flex-fill">
                                     <label for="nome" class="" >Nome</label>
-                                    <input type="text" name="nome" id="nome" required class="form-control">
+                                    <input type="text" name="nome" id="nome" value="<?= $dados_administrador['nome'] ?>" required class="form-control">
                                 </div>
 
                                 <div class="form-group col-md-3 flex-fill">
                                     <label for="email">E-mail</label>
-                                    <input type="email" name="email" id="email" required class="form-control">
+                                    <input type="email" name="email" id="email" value="<?= $dados_administrador['email'] ?>" required class="form-control">
                                 </div>
 
                                 <div class="form-group col-md-3 flex-fill">
                                     <label for="cpf">CPF</label>
-                                    <input type="text" name="cpf" id="cpf" required class="form-control">
+                                    <input type="text" name="cpf" id="cpf" required value="<?= $dados_administrador['cpf'] ?>" class="form-control">
                                 </div>
                             </div>
 
@@ -93,12 +108,12 @@
                             <div class="row">
                                 <div class="form-group col-md-3 flex-fill">
                                     <label for="telefone" class="" >Telefone</label>
-                                    <input type="text" name="telefone" id="telefone" required class="form-control">
+                                    <input type="text" name="telefone" id="telefone" value="<?= $dados_administrador['telefone'] ?>" required class="form-control">
                                 </div>
                                 
                                 <div class="form-group col-md-3 flex-fill">
                                     <label for="telefone" class="" >Sexo</label>
-                                    <select name="sexo" id="sexo" required class="form-select">
+                                    <select name="sexo" id="sexo" required value="<?= $dados_administrador['nome'] ?>" class="form-select">
                                         <option value="f">Feminino</option>
                                         <option value="m">Masculino</option>
                                         <option value="o">Prefiro não informar</option>
@@ -107,7 +122,7 @@
 
                                 <div class="form-group col-md-3 flex-fill">
                                     <label for="dtNascimento" >Data de nascimento</label>
-                                    <input type="date" name="dtNascimento" required id="dtNascimento" class="form-control">
+                                    <input type="date" name="dtNascimento" required id="dtNascimento" value="<?= $dados_administrador['data_nascimento'] ?>" class="form-control">
                                 </div>
                             </div>
 
@@ -115,14 +130,14 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label for="senha">Senha</label>
-                                    <input type="text" name="senha" required id="senha" class="form-control">
+                                    <input type="text" name="senha" required id="senha" value="<?= $dados_administrador['senha'] ?>" class="form-control">
                                 </div>
                             </div>
 
                             <!-- Botão Formulário -->
                             <div class="d-flex justify-content-end pt-3">
-                                <div class="col-md-2 ">
-                                    <input type="submit" name="cadastrar" class="w-100 btn  btn-primary" value="Cadastrar administrador">
+                                <div class="col-md-2">
+                                    <input type="submit" name="cadastrar" class="w-100 btn  btn-primary" value="Alterar dados">
                                 </div>
                             </div>
                         </div>
