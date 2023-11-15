@@ -40,19 +40,19 @@
                                 <a href="../admins/index.php" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Administradores</span></a>
                             </li>
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Clientes</span></a>
+                                <a href="../clientes/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Clientes</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Gêneros</span></a>
+                                <a href="../generos/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Gêneros</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Diretores</span></a>
+                                <a href="../diretores/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Diretores</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Formas de pagamento</span></a>
+                                <a href="../pagamentos/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Formas de pagamento</span></a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Filmes</span></a>
+                                <a href="../filmes/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Filmes</span></a>
                             </li>
                         </ul>
                     </li>
