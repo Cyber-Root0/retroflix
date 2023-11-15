@@ -47,7 +47,7 @@ CREATE TABLE filme(
     titulo VARCHAR(45),
     data_lancamento DATE,
     sinopse TEXT,
-    imagem_capa BLOB,
+    imagem_capa VARCHAR(255),
     codigo_diretor INT,
     codigo_genero INT,
     link VARCHAR(255),
