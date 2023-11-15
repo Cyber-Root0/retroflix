@@ -1,3 +1,4 @@
 vendor
 composer.lock
 testes
+public/media/
