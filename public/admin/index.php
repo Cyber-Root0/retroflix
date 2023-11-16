@@ -1,3 +1,18 @@
+<?php
+
+require __DIR__."/../../vendor/autoload.php";
+require __DIR__."/../../app/config/config.php";
+use Retroflix\lib\login\Admin;
+
+if (isset($_POST["login"])) {
+
+  $username = $_POST["email"];
+  $password = $_POST["password"];
+   (new Admin())->login($username, $password);
+
+
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,11 +29,11 @@
 <body>
 <div class="d-flex flex-row justify-content-center align-items-center" style="height: 100vh">
         
-        <form class="col-4">
+<form class="col-4" method="POST" action="">
   <!-- Email input -->
   <div class="form-outline mb-">
     <label class="form-label" for="form2Example1">Email</label>
-    <input type="email" id="form2Example1" class="form-control" name="email" />
+    <input type="text" id="form2Example1" class="form-control" name="email" />
     <label class="form-label" for="form2Example1">Email</label>
   </div>
 
@@ -29,7 +44,7 @@
   </div>
 
   <!-- Submit button -->
-  <input type="submit" class="btn btn-primary btn-block mb-4" value="Fazer Login">
+  <input type="submit" name="login" class="btn btn-primary btn-block mb-4" value="Fazer Login">
 
 </form>
 

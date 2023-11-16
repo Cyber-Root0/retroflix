@@ -65,4 +65,12 @@ class Administrador extends Model{
         return [];
     }
 
+    public function login(Entity $entity){
+        $pdo = $this->DB->execute("SELECT * FROM $this->table WHERE email = '{$entity->email}' AND senha = '{$entity->senha}'");
+        if ( $pdo->rowCount() > 0) {
+            return $pdo->fetch(\PDO::FETCH_ASSOC);
+           }
+        return [];
+    }
+
 }
