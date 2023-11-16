@@ -7,8 +7,15 @@ use Retroflix\Entity\Entity;
  */
 class Cliente extends Entity{
 
-    public string $nome;
-    public string $sobrenome;
-    public float $valor; 
+    //ATRIBUTOS:
+    public int $codigo;
+    public  string $nome;
+    public  string $email;
+    public string $senha;
+    public string $cpf;
+    public string $telefone;
+    public string $sexo;
+    public \DateTime $dataNascimento;
+
 
 }
