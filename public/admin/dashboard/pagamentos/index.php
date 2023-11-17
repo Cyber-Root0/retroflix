@@ -7,7 +7,10 @@ use Retroflix\Entity\fpagamento\FPagamento as FPagamentoEntity;
 
 $fp = new FPagamento();
 $fpagamentoEntity = new FPagamentoEntity();
-
+use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $fpagamentoEntity->descricao = $_POST["filtro"];

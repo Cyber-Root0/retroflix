@@ -5,6 +5,11 @@
 
     use Retroflix\models\administrador\Administrador;
     use Retroflix\Entity\administrador\Administrador as AdministradorEntity;
+    use Retroflix\lib\login\Admin;
+    $loginManger = new Admin();
+    if (!$loginManger->isLoggedIn()){
+        $loginManger->redirect();
+    }
     $administrador = new Administrador();
     $administradorEntity = new AdministradorEntity();
 
@@ -108,9 +113,6 @@
                                 </ul>
                             </nav>
                         </div>
-
-
-
                     </form>
                 </div>
 

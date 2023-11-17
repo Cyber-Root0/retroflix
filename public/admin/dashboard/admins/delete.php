@@ -4,7 +4,10 @@
 
     use Retroflix\models\administrador\Administrador;
     use Retroflix\Entity\administrador\Administrador as AdministradorEntity;
-
+    use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
 
     if (isset($_GET["codigo"])) {
         $idAdministrador = $_GET['codigo'];

@@ -4,6 +4,11 @@ require __DIR__."/../../../../vendor/autoload.php";
 require __DIR__."/../../../../app/config/config.php";
 use Retroflix\models\diretor\Diretor;
 use Retroflix\Entity\diretor\Diretor as DiretorEntity;
+use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
+
 
 if ( $_SERVER['REQUEST_METHOD'] == "POST" ){
 

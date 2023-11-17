@@ -3,9 +3,13 @@
 <?php
     require __DIR__."/../../../../vendor/autoload.php";
     require __DIR__."/../../../../app/config/config.php";
-
+    use Retroflix\lib\login\Admin;
     use Retroflix\models\administrador\Administrador;
     use Retroflix\Entity\administrador\Administrador as AdministradorEntity;
+
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
 
     if(isset($_POST["cadastrar"])) {
 

@@ -1,3 +1,14 @@
+<?php
+ require_once __DIR__."/../../../../vendor/autoload.php";
+ require_once __DIR__."/../../../../app/config/config.php";
+use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
+
+    $dados_admin = $_SESSION["admin"]["data"];
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,7 +30,7 @@
             <div class="div d-flex flex-column align-items-center justify-content-center mt-4 gap-2">
                 <img style="width: 48px;" src="..\..\..\assets\img\avatar img.png" alt="">
                 <div class="texts div d-flex flex-column align-items-center justify-content-center">
-                    <h6>Gabriel Simionato</h6>
+                    <h6> <?= $dados_admin["nome"] ?></h6>
                     <p class="small">Administrador</p>
                 </div>
             </div>

@@ -1,3 +1,12 @@
+<?php
+
+require __DIR__."/../../../vendor/autoload.php";
+require __DIR__."/../../../app/config/config.php";
+use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 

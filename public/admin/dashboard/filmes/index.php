@@ -7,7 +7,10 @@
     use Retroflix\Entity\filme\Filme as FilmeEntity;
     use Retroflix\models\genero\Genero;
     use Retroflix\models\diretor\Diretor;
-    
+    use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
     $filmeEntity = new FilmeEntity();
     $filme = new Filme();
 

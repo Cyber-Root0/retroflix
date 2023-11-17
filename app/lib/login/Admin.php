@@ -10,11 +10,11 @@ class Admin implements LoginInterface{
     protected string $password;
     protected array $user = [
         "codigo" => 0,
-        "nome" => "Retroflix",
+        "nome" => "Retroflix Admin",
         "email" => "contato@retroflix.com.br"
     ];
     public function __construct(){
-        session_start();
+        @session_start();
     }
     public function login(string $username, string $password){
         $this->username = $username;
@@ -56,7 +56,7 @@ class Admin implements LoginInterface{
     }
 
     public function isLoggedIn() : bool{
-        if ($_SESSION["admin"]["login"] == true){
+        if ( isset($_SESSION["admin"]["login"]) && $_SESSION["admin"]["login"] == true){
             return true;
         }
         return false;
@@ -65,8 +65,9 @@ class Admin implements LoginInterface{
 
         if (empty($url)){
             header("Location: /admin/");
+        }else{
+            header("Location: $url");
         }
-        header("Location: $url");
 
     }
 }

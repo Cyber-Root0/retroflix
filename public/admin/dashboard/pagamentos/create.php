@@ -6,7 +6,10 @@ require __DIR__."/../../../../app/config/config.php";
 
 use Retroflix\models\fpagamento\FPagamento;
 use Retroflix\Entity\fpagamento\FPagamento as FPagamentoEntity;
-
+use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $fp = $_POST['descricao'];

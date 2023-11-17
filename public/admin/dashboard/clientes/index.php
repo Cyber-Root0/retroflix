@@ -1,11 +1,13 @@
-
 <?php
-    require __DIR__."/../../../../vendor/autoload.php";
-    require __DIR__."/../../../../app/config/config.php";
+    require_once __DIR__."/../../../../vendor/autoload.php";
+    require_once __DIR__."/../../../../app/config/config.php";
 
     use Retroflix\models\cliente\ClienteModel;
     use Retroflix\Entity\cliente\Cliente as ClienteEntity;
-
+    use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
     $cliente = new ClienteModel();
     $clienteEntity = new ClienteEntity();
 

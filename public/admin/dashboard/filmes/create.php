@@ -8,6 +8,10 @@
     use Retroflix\models\genero\Genero;
     use Retroflix\models\filme\Filme;
     use Retroflix\Entity\filme\Filme as FilmeEntity;
+    use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
     $filme = new Filme();
     $filmeEntity = new FilmeEntity();
 

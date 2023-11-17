@@ -4,7 +4,10 @@
 
     use Retroflix\models\filme\Filme;
     use Retroflix\Entity\filme\Filme as FilmeEntity;
-
+    use Retroflix\lib\login\Admin;
+    if (!(new Admin)->isLoggedIn()){
+        (new Admin)->redirect();
+    }
     if (isset($_GET["codigo"])) {
         $idFilme = $_GET['codigo'];
         $filme = new Filme();
