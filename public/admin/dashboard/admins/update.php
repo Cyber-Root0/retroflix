@@ -39,11 +39,11 @@
         $EntityAdministrador->codigo = $idAdministrador;
         $EntityAdministrador->nome = $nomeAdministrador;
         $EntityAdministrador->email = $emailAdministrador;
-        $EntityAdministrador->senha = $senhaAdministrador;
         $EntityAdministrador->cpf = $cpfAdministrador;
         $EntityAdministrador->telefone = $telefoneAdministrador;
         $EntityAdministrador->sexo = $sexoAdministrador;
         $EntityAdministrador->data_nascimento = $dataNascimentoAdministrador;
+        $EntityAdministrador->senha = $senhaAdministrador;
         
         $result = $administrador->update($EntityAdministrador);
         if ($result) {
@@ -114,9 +114,8 @@
                                 <div class="form-group col-md-3 flex-fill">
                                     <label for="telefone" class="" >Sexo</label>
                                     <select name="sexo" id="sexo" required value="<?= $dados_administrador['nome'] ?>" class="form-select">
-                                        <option value="f">Feminino</option>
-                                        <option value="m">Masculino</option>
-                                        <option value="o">Prefiro não informar</option>
+                                        <option <?php if($dados_administrador['sexo'] == "f") { echo "selected"; } ?> value="f">Feminino</option>
+                                        <option value="m" <?php if($dados_administrador['sexo'] == "m") { echo "selected"; } ?>>Masculino</option>
                                     </select>
                                 </div>
 

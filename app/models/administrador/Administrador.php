@@ -52,7 +52,18 @@ class Administrador extends Model{
     }
 
     public function update(Entity $entity) : bool {
-        return true;
+        $pdo =  $this->DB->execute("
+        UPDATE $this->table 
+        SET nome = '{$entity->nome}',  email = '{$entity->email}', senha = '{$entity->senha}',
+            cpf = '{$entity->cpf}', telefone = '{$entity->telefone}',
+            sexo = '{$entity->sexo}', data_nascimento = '{$entity->data_nascimento->format('Y-m-d')}'
+        WHERE codigo = {$entity->codigo} ");
+
+        if ( $pdo->rowCount() > 0) {
+         return true;
+        }
+ 
+        return false;
     }
 
     public function getAll() : array  {
