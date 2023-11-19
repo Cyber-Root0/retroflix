@@ -38,7 +38,7 @@ use Retroflix\lib\login\Admin;
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100" id="menu">
                     <!-- Home - Retroflix -->
                     <li class="nav-item w-100 ">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="/admin/dashboard/" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Início</span>
                         </a>
                     </li>
@@ -48,22 +48,22 @@ use Retroflix\lib\login\Admin;
                             <i class="fs-4 bi bi-pencil-square"></i> <span class="ms-1 d-none d-sm-inline">Gerenciar</span> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="../admins/index.php" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Administradores</span></a>
+                                <a href="/admin/dashboard/admins/index.php" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Administradores</span></a>
                             </li>
                             <li class="w-100">
-                                <a href="../clientes/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Clientes</span></a>
+                                <a href="/admin/dashboard/clientes/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Clientes</span></a>
                             </li>
                             <li>
-                                <a href="../generos/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Gêneros</span></a>
+                                <a href="/admin/dashboard/generos/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Gêneros</span></a>
                             </li>
                             <li>
-                                <a href="../diretores/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Diretores</span></a>
+                                <a href="/admin/dashboard/diretores/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Diretores</span></a>
                             </li>
                             <li>
-                                <a href="../pagamentos/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Formas de pagamento</span></a>
+                                <a href="/admin/dashboard/pagamentos/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Formas de pagamento</span></a>
                             </li>
                             <li>
-                                <a href="../filmes/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Filmes</span></a>
+                                <a href="/admin/dashboard/filmes/" class="nav-link px-0 text-body"> <span class="d-none d-sm-inline">Filmes</span></a>
                             </li>
                         </ul>
                     </li>
@@ -71,6 +71,11 @@ use Retroflix\lib\login\Admin;
                     <li class="nav-item w-100">
                         <a href="#" class="nav-link align-middle px-0">
                             <i class="fs-4 bi bi-camera-reels"></i> <span class="ms-1 d-none d-sm-inline">Locações</span>
+                        </a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a href="/admin/dashboard/logout/" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi bi bi-box-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Sair</span>
                         </a>
                     </li>
             </div>

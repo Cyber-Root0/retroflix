@@ -33,6 +33,8 @@ class Admin implements LoginInterface{
         if ( $this->isSuperAdmin()){
             $this->setLogin($this->user);
             $this->redirect("/admin/dashboard/");
+        }else{
+            $this->redirect("/admin/?login=false");
         }
 
         

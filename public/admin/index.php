@@ -12,6 +12,9 @@ if (isset($_POST["login"])) {
 
 
 }
+if (isset($_GET['login'])){
+  $msg = true;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,6 +27,7 @@ if (isset($_POST["login"])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
@@ -49,5 +53,20 @@ if (isset($_POST["login"])) {
 </form>
 
 </div>
+<script>
 
+  function loginError(){
+    Swal.fire({
+    icon: "error",
+    title: "Login Inválido",
+    text: "Tente novamente!"
+    });
+  }
+
+</script>
+<?php
+  if ($msg){
+    echo "<script>loginError();</script>";
+  }
+?>
 </body>
