@@ -24,13 +24,12 @@ class Admin implements LoginInterface{
         $administradorEntity->senha = $this->password;
 
         $user = (new Administrador)->login($administradorEntity);
-        
+       
         if (count($user) > 0) {
 
             $this->setLogin($user);
             $this->redirect("/admin/dashboard/");
-        }
-        if ( $this->isSuperAdmin()){
+        }else if ( $this->isSuperAdmin()){
             $this->setLogin($this->user);
             $this->redirect("/admin/dashboard/");
         }else{
