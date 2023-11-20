@@ -58,7 +58,7 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ){
                                         <input type="text" class="form-control w-100" name="filtro" id="">
                                     </div>
                                     <div class="div">
-                                        <a href="create.php" class="btn btn-primary">Cadastrar Gerente</a>
+                                        <a href="create.php" class="btn btn-primary">Cadastrar Diretor</a>
                                     </div>
                                 </div>
                                 <table class="table table-hover rounded">

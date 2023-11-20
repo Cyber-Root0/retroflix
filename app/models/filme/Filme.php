@@ -99,5 +99,87 @@ class Filme extends Model{
        
     }
 
+        
+    /**
+     * Comando pega todos os dados do filme, trazendo também o nome do genero e
+     * do diretor
+     * Codigo do genero está como codigo_genero
+     * Codigo do Diretor está como codigo_diretor
+     * nome_genero
+     * nome_diretor
+     * 
+     * As demais colunas, estão com o nome padrão das colunos do filme na tabela do banco
+     *
+     * @return array
+     */
+    public function getAllWithRelation() : array{
+        $pdo = $this->DB->execute("SELECT 
+        f.*,
+        g.nome as 'nome_genero',
+        d.nome as 'nome_diretor'
+    FROM $this->table f
+    inner join genero g ON f.codigo_genero = g.codigo
+    INNER JOIN diretor d ON f.codigo_diretor = d.codigo
+    GROUP BY f.codigo;");
+
+    if($pdo->rowCount() > 0) {
+        return $pdo->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    return [];
+
+    }
+
+    
+    /**
+     * Comando pega todos os dados do filme, trazendo também o nome do genero e
+     * do diretor
+     * Codigo do genero está como codigo_genero
+     * Codigo do Diretor está como codigo_diretor
+     * nome_genero
+     * nome_diretor
+     * 
+     * Passa o parametro do código do filme a ser seleciona
+     *
+     * @param  mixed $idFilme
+     * @return array
+     */
+    public function getRelationId(int $idFilme) : array{
+        $pdo = $this->DB->execute("SELECT 
+        f.*,
+        g.nome as 'nome_genero',
+        d.nome as 'nome_diretor'
+    FROM $this->table f
+    inner join genero g ON f.codigo_genero = g.codigo
+    INNER JOIN diretor d ON f.codigo_diretor = d.codigo
+    WHERE f.codigo = $idFilme
+    GROUP BY f.codigo;");
+
+    if($pdo->rowCount() > 0) {
+        return $pdo->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    return [];
+
+    }
+
+
+
+    public function findRelation(Entity $Filme) : array{
+        $pdo = $this->DB->execute("SELECT
+        f.*,
+        g.nome as 'nome_genero',
+        d.nome as 'nome_diretor'
+    FROM filme f
+    inner join genero g ON f.codigo_genero = g.codigo
+    INNER JOIN diretor d ON f.codigo_diretor = d.codigo
+    WHERE f.titulo LIKE '%{$Filme->pesquisa}%' OR g.nome LIKE '%{$Filme->pesquisa}%' OR d.nome LIKE '%{$Filme->pesquisa}%'
+    GROUP BY f.codigo;
+        ");
+
+        if($pdo->rowCount() > 0) {
+            return $pdo->fetchAll(\PDO::FETCH_ASSOC);
+        }
+        return [];
+    }
+    
 
 }
