@@ -163,7 +163,7 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="senha">Preço Diário</label>
-                                    <input type="number" required name="preco_diario" required id="senha" class="form-control" value="<?= $dados_filme['preco_diario']?>">
+                                    <input type="currency" min="0.00" max="10000.00" step="0.01" name="preco_diario" required id="senha" class="form-control" value="<?= $dados_filme['preco_diario']?>">
                                 </div>
                             </div>
 

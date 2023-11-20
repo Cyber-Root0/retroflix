@@ -15,6 +15,8 @@ class Filme extends Entity{
    public int $codigo_diretor;
    public int $codigo_genero;
    public string $link;
-   public float $preco_diario;
+   public float $preco_diario;  
+   
+   public string $pesquisa;
 
 }
