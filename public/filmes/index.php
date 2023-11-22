@@ -260,8 +260,8 @@ if (isset($_GET["pesquisa"])) {
 .card {
         color: black;
         width: 200px;
-        min-height: 420px !important;
-        max-height: 420px !important;
+        min-height: 470px !important;
+        max-height: 470px !important;
     }
    .card .card-img-top{
         height: 200px;
@@ -349,13 +349,14 @@ if (isset($_GET["pesquisa"])) {
         <?php  foreach($Filmes as $filme): ?>
         <div class="card ">
             <img class="card-img-top" src="/media/capas/<?= $filme["imagem_capa"] ?>" alt="Card image">
-            <div class="card-body">
+            <div class="card-body" style="text-align:center;">
                 <h5 class="card-title"><?= $filme["titulo"] ?></h5>
                 <p class="card-text"><?= substr($filme["sinopse"],0,100) ?>...</p>
                 <div class="additional_info">
                     <span>Gênero: <?= $filme["nome_genero"] ?></span>
                     <span>Diretor: <?= $filme["nome_diretor"] ?></span> 
                 </div>
+                <a href="/filmes/cart/?add=<?= $filme["codigo"] ?>" class="btn btn-dark" style="margin-top: 20px;">Locar</a>
             </div>
         </div>
         <?php endforeach; ?>
