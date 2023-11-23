@@ -1,3 +1,24 @@
+<?php
+require_once __DIR__ . "/../../../vendor/autoload.php";
+require_once __DIR__ . "/../../../app/config/config.php";
+use Retroflix\Entity\filme\FilmeLocacao;
+use Retroflix\models\filme\Filme;
+use Retroflix\lib\cart\Cart;
+$cart = new Cart();
+if ( isset($_GET['add']) ){
+  $idFilme = (int) $_GET["add"];
+  $filme = (new Filme)->get($idFilme);
+  
+  $filmeLocacao = new FilmeLocacao();
+  $filmeLocacao->titulo = $filme["titulo"];
+  $filmeLocacao->codigo_filme =strval($filme["codigo"]);
+  $filmeLocacao->numero_dias = 1;
+  $filmeLocacao->imagem_capa = $filme["imagem_capa"];
+  $filmeLocacao->preco_diario = $filme["preco_diario"];
+
+  $cart->add($filmeLocacao);
+}
+?>
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
@@ -249,68 +270,62 @@
         </div>
     </nav>
     <!-- Body -->
-    <div class="container" style="display: flex; gap: 20px; flex-wrap: wrap">
+    <div class="container" style="display: flex; gap: 20px; flex-wrap: wrap; width: 100vw;height: 100vh;justify-content: center;align-items: center;">
 
         <!-- Tabelas -->
         <div class="mt-2">
                             <div class="">
                                 <div class="div d-flex justify-content-between mb-3">
                                     <div class="d-flex flex-row align-items-center">
-                                        <p class="m-0 flex-fill">Filtrar por:</p>
-                                        <input type="text" class="form-control w-100" name="filtro" id="">
+                                        <p class="m-0 flex-fill" style="color:black">Carrinho de Filmes</p>
                                     </div>
                                     <div class="div">
-                                        <a href="create.php" class="btn btn-primary">Cadastrar administrador</a>
+                                        <a href="create.php" class="btn btn-primary">Finalizar Locação</a>
                                     </div>
                                 </div>
                                 <table class="table table-hover rounded">
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th scope="col">Código</th>
-                                            <th scope="col">Nome</th>
-                                            <th scope="col">E-mail</th>
-                                            <th scope="col">CPF</th>
-                                            <th scope="col">Telefone</th>
-                                            <th scope="col">Sexo</th>
-                                            <th scope="col">Data de Nascimento</th>
-                                            <th scope="col">Senha</th>
+                                            <th scope="col">Capa</th>
+                                            <th scope="col">Titulo</th>
+                                            <th scope="col">Número De Dias</th>
+                                            <th scope="col">Preço diário</th>
+                                            <th scope="col">Subtotal</th>
+                                            <th scope="col"></th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
-                                    <tbody class="">
-                                        
+                                    <tbody class="" style="text-align: center;">
+                                      <?php foreach($cart->getAll() as $key => $filme): ?>
+                                        <tr>
+                                            <td scope="row"><?= $key ?></td>
+                                            <td scope="row"> <img height="80" width="80" src="/media/capas/<?= $filme["img"] ?>"> </td>
+                                            <td scope="row"><?= $filme["titulo"] ?></td>
+                                            <td><?= $filme["numero_dias"] ?></td>
+                                            <td><?= $filme["preco_diario"] ?></td>
+                                            <td>R$ <?= $filme["subtotal"] ?></td>
+                                            <td>
+                                                <a class="btn btn-outline-primary btn-sm ml-2" href="update.php?codigo=">
+                                                    <i class="fas fa-edit"></i> Atualizar
+                                                </a>
+                                                <a type="button" class="btn btn-outline-danger btn-sm ml-2" href="delete.php?codigo=<?= $key?>"><i class="fas fa-trash-alt"></i> Excluir</a>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
                                         <tr>
                                             <td scope="row"></td>
                                             <td scope="row"></td>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <a class="btn btn-outline-primary btn-sm ml-2" href="update.php?codigo=">
-                                                    <i class="fas fa-edit"></i> Alterar
-                                                </a>
-                                                <a type="button" class="btn btn-outline-danger btn-sm ml-2" href="delete.php?codigo=<i class="fas fa-trash-alt"></i> Excluir</a>
-                                            </td>
+                                            <td>Total: </td>
+                                            <td>R$ <?= $cart->getTotal() ?></td>
+                      
                                         </tr>
-                                        
                                     </tbody>
                                 </table>
                             </div>
                             <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Próximo</a>
-                                    </li>
-                                </ul>
+                                
                             </nav>
                         </div>
         <!--
@@ -328,7 +343,15 @@
         </div>
         -->
     </div>
-    <div class="map-clean"></div>
+    <div class="map-clean" style="
+    color: black;
+    text-align: left;
+    margin-top: -100px;
+    margin-left: 20%;
+">
+<a class="btn btn-primary">Voltar
+</a>
+</div>
     <footer style="padding-top: 20px;padding-bottom: 20px;">
         <div class="container text-center">
             <p>Retroflix © 2023</p>
