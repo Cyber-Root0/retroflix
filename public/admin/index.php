@@ -31,26 +31,32 @@ if (isset($_GET['login'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-<div class="d-flex flex-row justify-content-center align-items-center" style="height: 100vh">
-        
-<form class="col-4" method="POST" action="">
-  <!-- Email input -->
-  <div class="form-outline mb-">
-    <label class="form-label" for="form2Example1">Email</label>
-    <input type="text" id="form2Example1" class="form-control" name="email" />
-    <label class="form-label" for="form2Example1">Email</label>
-  </div>
+<div class="d-flex flex-row justify-content-center align-items-center bg-light" style="height: 100vh">
 
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <label class="form-label" for="form2Example2">Senha</label>
-    <input type="password" id="form2Example2" class="form-control" name="password" />
-  </div>
+<div class="container bg-white col-md-4 shadow-sm p-4 border-0 card">
+  <form class="" method="POST" action="">
+  
+    <h2 class="mb-4">Login</h2>
 
-  <!-- Submit button -->
-  <input type="submit" name="login" class="btn btn-primary btn-block mb-4" value="Fazer Login">
-
-</form>
+    <!-- Email input -->
+    <div class="form-outline mb-2">
+      <label class="form-label" for="form2Example1">Email</label>
+      <input type="text" id="form2Example1" class="form-control" name="email" />
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Senha</label>
+      <input type="password" id="form2Example2" class="form-control" name="password" />
+    </div>
+  
+    <!-- Submit button -->
+    <div class="d-flex flex-row-reverse">
+      <input type="submit" name="login" class="btn btn-primary btn-block mb-4 " value="Fazer login">
+    </div>
+  
+  </form>
+</div>
 
 </div>
 <script>
