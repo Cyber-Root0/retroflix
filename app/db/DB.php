@@ -57,4 +57,8 @@ class DB{
         
         $this->connection = null;
     }
+
+    public function getLastId(){
+        return $this->connection->lastInsertId();
+    }
 }

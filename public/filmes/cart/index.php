@@ -280,7 +280,7 @@ if ( isset($_GET['add']) ){
                                         <p class="m-0 flex-fill" style="color:black">Carrinho de Filmes</p>
                                     </div>
                                     <div class="div">
-                                        <a href="create.php" class="btn btn-primary">Finalizar Locação</a>
+                                        <a href="/filmes/cart/pagamento" class="btn btn-primary">Finalizar Locação</a>
                                     </div>
                                 </div>
                                 <table class="table table-hover rounded">
