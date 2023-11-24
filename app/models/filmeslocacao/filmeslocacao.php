@@ -18,12 +18,12 @@ class filmeslocacao extends Model{
     }
 
     public function create(Entity $entity) : bool{
-     
-       $pdo =  $this->DB->execute("INSERT INTO $this->table (codigo_locacao,codigo_filme,numero_dias,preco_diario,subtotal) VALUES ( 
+       $pdo =  $this->DB->execute("INSERT INTO $this->table 
+       (codigo_locacao,codigo_filme,numero_dias,preco_diario,subtotal) VALUES ( 
         {$entity->codigo_locacao},        
         {$entity->codigo_filme},
         {$entity->numero_dias},
-        '{$entity->preco_diario}'
+        '{$entity->preco_diario}',
         '{$entity->subtotal}'
         )");
 

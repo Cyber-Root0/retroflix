@@ -32,8 +32,6 @@
         <div class="row flex-nowrap">
             <!-- Chamando a Side-Bar do sistema -->
             <?php require("..\componentes\side-bar.php"); ?>
-            <?php require("..\..\admin\dashboard\componentes\side-bar.php"); ?>
-
             <!-- Conteúdo do site -->
             <div class="col-auto col-md-9 ms-5 mt-4 bg-light py-3">
                 <h2>Administradores</h2>

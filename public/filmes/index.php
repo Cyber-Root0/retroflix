@@ -4,6 +4,12 @@ require_once __DIR__ . "/../../app/config/config.php";
 
 use Retroflix\models\filme\Filme;
 use Retroflix\Entity\filme\Filme as EntityFilme;
+use Retroflix\lib\login\Customer;
+$loginCustomer = new Customer();
+//validações se o usuario esta logado
+if (!$loginCustomer->isLoggedIn()){
+    $loginCustomer->redirect();
+}
 
 /* não vamos usar a Entity do filme, pois vamos apenas selecionar o filme na Model */
 

@@ -48,7 +48,8 @@ if (isset($_POST["metodo_pagamento"])) {
             $filmelocacaoEntity->subtotal = (float) $item['subtotal'];
             $result = $filmelocacao->create($filmelocacaoEntity);
         }
-        header("Location: /cliente/");
+        $cart->deleteAll();
+        header("Location: /cliente/minha-conta/locacoes/?new_location=true");
     }
     
 }else{

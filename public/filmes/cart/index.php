@@ -4,6 +4,13 @@ require_once __DIR__ . "/../../../app/config/config.php";
 use Retroflix\Entity\filme\FilmeLocacao;
 use Retroflix\models\filme\Filme;
 use Retroflix\lib\cart\Cart;
+use Retroflix\lib\login\Customer;
+$loginCustomer = new Customer();
+//validações se o usuario esta logado
+if (!$loginCustomer->isLoggedIn()){
+    $loginCustomer->redirect();
+}
+
 $cart = new Cart();
 if ( isset($_GET['add']) ){
   $idFilme = (int) $_GET["add"];
@@ -349,7 +356,7 @@ if ( isset($_GET['add']) ){
     margin-top: -100px;
     margin-left: 20%;
 ">
-<a class="btn btn-primary">Voltar
+<a class="btn btn-primary" href="/filmes/">Voltar
 </a>
 </div>
     <footer style="padding-top: 20px;padding-bottom: 20px;">

@@ -73,4 +73,9 @@ class Cart{
 
     }
 
+    public function deleteAll(){
+
+        unset($_SESSION['cart']);
+    }
+
 }
