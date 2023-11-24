@@ -19,7 +19,7 @@ use Retroflix\lib\login\Admin;
             <?php require("componentes/side-bar.php"); ?>
 
             <!-- Conteúdo do site -->
-            <div class="col-auto col-md-9 ms-5 bg-light py-3">
+            <div class="col-auto col-md-9 ms-5 mt-4 bg-light py-3">
                 <h2>Dashboard</h2>
                 <p class="text-body small">
                     Confira os mais recentes resultados obtidos.
@@ -30,32 +30,36 @@ use Retroflix\lib\login\Admin;
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">+210</h2>
-                                <p>Filmes locados</p>
-                                <button class="btn btn-primary btn-sm">Conferir detalhes</button>
+                                <h2 class="text-success">{210}</h2>
+                                <p>Filmes cadastrados</p>
+                                <a href="public\admin\dashboard\filmes\index.php">
+                                    <button class="btn btn-primary btn-sm">Conferir detalhes</button>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">+10</h2>
-                                <p>Novos usuários</p>
-                                <button class="btn btn-primary btn-sm">Conferir detalhes</button>
+                                <h2 class="text-success">{10}</h2>
+                                <p>Clientes cadastrados</p>
+                                <a href="public\admin\dashboard\clientes\index.php">
+                                    <button class="btn btn-primary btn-sm">Conferir detalhes</button>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">R$ 2.197,00</h2>
-                                <p>Lucro gerado</p>
-                                <button class="btn btn-primary btn-sm">Conferir detalhes</button>
+                                <h2 class="text-success">{R$ 2.197,00}</h2>
+                                <p>Faturamento</p>
+                                <a href="public\admin\dashboard\locacoes\index.php">
+                                    <button class="btn btn-primary btn-sm">Conferir detalhes</button>
+                                </a>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
                 <!-- Tabela de destaque - Locações recentes -->
@@ -104,19 +108,6 @@ use Retroflix\lib\login\Admin;
                             </tbody>
                         </table>
                     </div>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
 

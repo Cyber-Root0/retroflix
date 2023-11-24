@@ -30,7 +30,7 @@ if (isset($_GET["pesquisa"])) {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700&amp;display=swap">
 <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
@@ -41,9 +41,8 @@ if (isset($_GET["pesquisa"])) {
 
     .video-container {
         width: 100vw;
-        height: 100vh;
+        height: 98vh;
         filter: blur(4px);
-
     }
 
     iframe {
@@ -259,17 +258,13 @@ if (isset($_GET["pesquisa"])) {
 }
 .card {
         color: black;
-        width: 200px;
-        min-height: 470px !important;
-        max-height: 470px !important;
+        width: 328px;
+        min-height: 328px !important;
+        max-height: 475px !important;
     }
    .card .card-img-top{
         height: 200px;
         width: 100%;
-   }
-   .card .card-text{
-    font-size: 12px;
-    height: 70px;
    }
    .card .additional_info{
     display: flex;
@@ -282,13 +277,13 @@ if (isset($_GET["pesquisa"])) {
 </style>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
-    <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand" href="#">RETROFLIX</a><button data-bs-toggle="collapse"
+    <nav class="navbar navbar-light navbar-expand-md fixed-top bg-dark" id="mainNav">
+        <div class="container"><a class="navbar-brand text-light" href="#">RETROFLIX</a><button data-bs-toggle="collapse"
                 class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i
                     class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto text-light">
                     <li class="nav-item nav-link"></li>
                     <li class="nav-item nav-link"><a class="nav-link" href="/cliente/cadastro/">CADASTRE-SE</a></li>
                     <li class="nav-item nav-link"><a class="nav-link" href="/cliente/">ENTRAR</a></li>
@@ -347,7 +342,7 @@ if (isset($_GET["pesquisa"])) {
     <!-- Body -->
     <div class="container" style="display: flex; gap: 20px; flex-wrap: wrap">
         <?php  foreach($Filmes as $filme): ?>
-        <div class="card ">
+        <div class="card">
             <img class="card-img-top" src="/media/capas/<?= $filme["imagem_capa"] ?>" alt="Card image">
             <div class="card-body" style="text-align:center;">
                 <h5 class="card-title"><?= $filme["titulo"] ?></h5>
@@ -359,6 +354,20 @@ if (isset($_GET["pesquisa"])) {
                 <a href="/filmes/cart/?add=<?= $filme["codigo"] ?>" class="btn btn-dark" style="margin-top: 20px;">Locar</a>
             </div>
         </div>
+
+        <div class="card">
+            <img class="card-img-top" src="/media/capas/<?= $filme["imagem_capa"] ?>"  alt="Card image cap">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><?= $filme["titulo"] ?></h5>
+                <p class="card-text"><?= substr($filme["sinopse"],0,100) ?></p>
+                <div class="div">
+                    <span class="badge bg-dark">Gênero: <?= $filme["nome_genero"] ?></span>
+                    <span class="badge bg-dark">Diretor: <?= $filme["nome_diretor"] ?></span>
+                </div>
+                <a href="/filmes/cart/?add=<?= $filme["codigo"] ?>" class="btn btn-primary w-100" style="margin-top: 20px;">Locar</a>
+            </div>
+        </div>
+
         <?php endforeach; ?>
     </div>
 
