@@ -13,7 +13,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item nav-link"></li>
-                        <li class="nav-item nav-link"><a class="nav-link" href="/cliente/cadastro/">CADASTRE-SE</a></li>
+                        <li class="nav-item nav-link"><a class="nav-link" href="/cliente/cadastro">CADASTRE-SE</a></li>
                         <li class="nav-item nav-link"><a class="nav-link" href="/cliente/">ENTRAR</a></li>
                     </ul>
                 </div>
