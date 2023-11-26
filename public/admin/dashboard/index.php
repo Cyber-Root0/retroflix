@@ -44,7 +44,7 @@ $montante_faturamento = $locacaoModel->statistic();
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">+ <?= $montante_filme['montante'] ?></h2>
+                                <h2 class="text-success"><?= $montante_filme['montante'] ?></h2>
                                 <p>Filmes cadastrados</p>
                                 <a href="public\admin\dashboard\filmes\index.php">
                                     <button class="btn btn-primary btn-sm">Conferir detalhes</button>
@@ -55,7 +55,7 @@ $montante_faturamento = $locacaoModel->statistic();
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">+ <?= $montante_cliente['montante'] ?></h2>
+                                <h2 class="text-success"><?= $montante_cliente['montante'] ?></h2>
                                 <p>Clientes cadastrados</p>
                                 <a href="public\admin\dashboard\clientes\index.php">
                                     <button class="btn btn-primary btn-sm">Conferir detalhes</button>
@@ -66,7 +66,7 @@ $montante_faturamento = $locacaoModel->statistic();
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">R$ <?= $montante_faturamento['montante']?></h2>
+                                <h2 class="text-success"><?= $montante_faturamento['montante'] ?></h2>
                                 <p>Faturamento</p>
                                 <a href="public\admin\dashboard\locacoes\index.php">
                                     <button class="btn btn-primary btn-sm">Conferir detalhes</button>

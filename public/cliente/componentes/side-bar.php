@@ -2,12 +2,12 @@
  require_once __DIR__."/../../../vendor/autoload.php";
  require_once __DIR__."/../../../app/config/config.php";
 
-use Retroflix\lib\login\Admin;
-    if (!(new Admin)->isLoggedIn()){
-        (new Admin)->redirect();
+use Retroflix\lib\login\Customer;
+    if (!(new Customer)->isLoggedIn()){
+        (new Customer)->redirect();
     }
 
-    $dados_admin = $_SESSION["admin"]["data"];
+    $dados_admin = $_SESSION["customer"]["data"];
 
 ?>
 <!DOCTYPE html>
@@ -32,30 +32,30 @@ use Retroflix\lib\login\Admin;
                 <img style="width: 48px;" src="..\..\..\assets\img\avatar img.png" alt="">
                 <div class="texts div d-flex flex-column align-items-center justify-content-center">
                     <h6> <?= $dados_admin["nome"] ?></h6>
-                    <p class="small">Administrador</p>
+                    <p class="small">Meu Perfil</p>
                 </div>
             </div>
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100" id="menu">
                     <!-- Home - Retroflix -->
                     <li class="nav-item w-100 ">
-                        <a href="/admin/dashboard/" class="nav-link align-middle px-0">
+                        <a href="/cliente/minha-conta/" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Início</span>
                         </a>
                     </li>
                     <li class="nav-item w-100 ">
-                        <a href="/admin/dashboard/" class="nav-link align-middle px-0">
+                        <a href="/cliente/minha-conta/perfil/" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Meu perfil</span>
                         </a>
                     </li>
                     <!-- Funções fundamentais -->
                     <li class="nav-item w-100">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="/cliente/minha-conta/locacoes/" class="nav-link align-middle px-0">
                             <i class="fs-4 bi bi-camera-reels"></i> <span class="ms-1 d-none d-sm-inline">Locações</span>
                         </a>
                     </li>
                     <li class="nav-item w-100">
-                        <a href="/admin/dashboard/logout/" class="nav-link align-middle px-0">
+                        <a href="/cliente/minha-conta/logout/" class="nav-link align-middle px-0">
                             <i class="fs-4 bi bi bi-box-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Sair</span>
                         </a>
                     </li>

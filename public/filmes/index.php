@@ -348,18 +348,6 @@ if (isset($_GET["pesquisa"])) {
     <!-- Body -->
     <div class="container" style="display: flex; gap: 20px; flex-wrap: wrap">
         <?php  foreach($Filmes as $filme): ?>
-        <div class="card">
-            <img class="card-img-top" src="/media/capas/<?= $filme["imagem_capa"] ?>" alt="Card image">
-            <div class="card-body" style="text-align:center;">
-                <h5 class="card-title"><?= $filme["titulo"] ?></h5>
-                <p class="card-text"><?= substr($filme["sinopse"],0,100) ?>...</p>
-                <div class="additional_info">
-                    <span>Gênero: <?= $filme["nome_genero"] ?></span>
-                    <span>Diretor: <?= $filme["nome_diretor"] ?></span> 
-                </div>
-                <a href="/filmes/cart/?add=<?= $filme["codigo"] ?>" class="btn btn-dark" style="margin-top: 20px;">Locar</a>
-            </div>
-        </div>
 
         <div class="card">
             <img class="card-img-top" src="/media/capas/<?= $filme["imagem_capa"] ?>"  alt="Card image cap">

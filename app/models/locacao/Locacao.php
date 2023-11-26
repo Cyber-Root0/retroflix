@@ -117,6 +117,22 @@ class Locacao extends Model{
     
         return [];
     }
+
+    public function getAllWithRelationByClientID($id){
+
+        $sql = "SELECT l.codigo AS codigo_locacao, l.data_locacao, l.total, l.status_atual, c.nome AS nome_cliente, fp.descricao AS forma_pagamento 
+        FROM Locacao l 
+        INNER JOIN cliente c ON l.codigo_cliente = c.codigo 
+        INNER JOIN forma_pagamento fp ON l.codigo_pagamento = fp.codigo WHERE l.codigo_cliente=$id;
+        ";
+        $pdo = $this->DB->execute($sql);
+        if ( $pdo->rowCount() > 0) {
+            return $pdo->fetchAll(\PDO::FETCH_ASSOC);
+           }
+    
+        return [];
+    }
+
     public function statistic(){
 
         $pdo =  $this->DB->execute("SELECT SUM(total) as 'montante' FROM {$this->table};");
