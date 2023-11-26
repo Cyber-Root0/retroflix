@@ -3,9 +3,23 @@
 require __DIR__."/../../../vendor/autoload.php";
 require_once __DIR__."/../../../app/config/config.php";
 use Retroflix\lib\login\Admin;
+use Retroflix\models\locacao\Locacao;
+use Retroflix\models\cliente\ClienteModel;
+use Retroflix\models\filme\Filme;
+
     if (!(new Admin)->isLoggedIn()){
         (new Admin)->redirect();
     }
+$status = [
+    "Pendente",
+    "Pago"
+];
+$locacaoModel = new Locacao();
+$locacoes = $locacaoModel->getAllWithRelation();
+
+$montante_filme = (new Filme)->statistic();
+$montante_cliente = (new ClienteModel)->statistic();
+$montante_faturamento = $locacaoModel->statistic();
 
 ?>
 
@@ -30,7 +44,7 @@ use Retroflix\lib\login\Admin;
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">{210}</h2>
+                                <h2 class="text-success">+ <?= $montante_filme['montante'] ?></h2>
                                 <p>Filmes cadastrados</p>
                                 <a href="public\admin\dashboard\filmes\index.php">
                                     <button class="btn btn-primary btn-sm">Conferir detalhes</button>
@@ -41,7 +55,7 @@ use Retroflix\lib\login\Admin;
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">{10}</h2>
+                                <h2 class="text-success">+ <?= $montante_cliente['montante'] ?></h2>
                                 <p>Clientes cadastrados</p>
                                 <a href="public\admin\dashboard\clientes\index.php">
                                     <button class="btn btn-primary btn-sm">Conferir detalhes</button>
@@ -52,7 +66,7 @@ use Retroflix\lib\login\Admin;
                     <div class="card w-100 shadow-sm border-0">
                         <div class="card-body">
                             <div class="py-1">
-                                <h2 class="text-success">{R$ 2.197,00}</h2>
+                                <h2 class="text-success">R$ <?= $montante_faturamento['montante']?></h2>
                                 <p>Faturamento</p>
                                 <a href="public\admin\dashboard\locacoes\index.php">
                                     <button class="btn btn-primary btn-sm">Conferir detalhes</button>
@@ -77,34 +91,15 @@ use Retroflix\lib\login\Admin;
                                 </tr>
                             </thead>
                             <tbody class="">
+                                <?php foreach($locacoes as $locacao): ?>
                                 <tr>
-                                    <td scope="row">Bruno Alves</td>
-                                    <td>05/11/2023</td>
-                                    <td>Pago</td>
-                                    <td>Cartão de Crédito</td>
-                                    <td>R$ 17,80</td>
+                                    <td scope="row"><?= $locacao["nome_cliente"] ?></td>
+                                    <td><?= $locacao["data_locacao"] ?></td>
+                                    <td><?= $status[$locacao["status_atual"]] ?></td>
+                                    <td><?= $locacao["forma_pagamento"] ?></td>
+                                    <td>R$ <?= $locacao["total"] ?></td>
                                 </tr>
-                                <tr>
-                                    <td scope="row">Gabriel Brandão</td>
-                                    <td>04/11/2023</td>
-                                    <td>Pago</td>
-                                    <td>Cartão de Débito</td>
-                                    <td>R$ 22,40</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Gracielle</td>
-                                    <td>03/11/2023</td>
-                                    <td>Pendente</td>
-                                    <td>Boleto</td>
-                                    <td>R$ 18,20</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Francielle</td>
-                                    <td>01/11/2023</td>
-                                    <td>Pago</td>
-                                    <td>Cartão de Débito</td>
-                                    <td>R$ 28,99</td>
-                                </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

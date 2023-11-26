@@ -4,11 +4,14 @@ require __DIR__."/../../vendor/autoload.php";
 require __DIR__."/../../app/config/config.php";
 use Retroflix\lib\login\Customer;
 $msg = false;
-if (isset($_POST["login"])) {
+
+//verificação se ja esta logado
+if ((new Customer)->isLoggedIn()){
+    (new Customer)->redirect("/filmes/");
+}else if (isset($_POST["login"])) {
 
   $username = $_POST["email"];
   $password = $_POST["password"];
-    var_dump($_POST);
    (new Customer())->login($username, $password);
 
 

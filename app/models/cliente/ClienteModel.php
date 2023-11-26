@@ -99,4 +99,17 @@ Class ClienteModel extends Model{
         return [];
     }
 
+    public function statistic(){
+        
+        $pdo =  $this->DB->execute("SELECT COUNT(*) as 'montante' FROM {$this->table};");
+
+        if ( $pdo->rowCount() > 0) {
+         return $pdo->fetch(\PDO::FETCH_ASSOC);
+        }
+ 
+        return [];
+
+    }
+
+
 }

@@ -69,7 +69,7 @@ use Retroflix\lib\login\Admin;
                     </li>
                     <!-- Funções fundamentais -->
                     <li class="nav-item w-100">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="/admin/dashboard/locacoes/" class="nav-link align-middle px-0">
                             <i class="fs-4 bi bi-camera-reels"></i> <span class="ms-1 d-none d-sm-inline">Locações</span>
                         </a>
                     </li>

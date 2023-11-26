@@ -161,8 +161,6 @@ class Filme extends Model{
 
     }
 
-
-
     public function findRelation(Entity $Filme) : array{
         $pdo = $this->DB->execute("SELECT
         f.*,
@@ -179,6 +177,18 @@ class Filme extends Model{
             return $pdo->fetchAll(\PDO::FETCH_ASSOC);
         }
         return [];
+    }
+    
+    public function statistic(){
+        
+        $pdo =  $this->DB->execute("SELECT COUNT(*) as 'montante' FROM {$this->table};");
+
+        if ( $pdo->rowCount() > 0) {
+         return $pdo->fetch(\PDO::FETCH_ASSOC);
+        }
+ 
+        return [];
+
     }
     
 

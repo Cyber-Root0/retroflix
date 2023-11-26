@@ -12,7 +12,11 @@ class Locacao extends Model{
 
     public function get(int $id) : array{
 
-        $pdo =  $this->DB->execute("SELECT * FROM $this->table WHERE codigo = $id");
+        $pdo =  $this->DB->execute("SELECT l.codigo AS codigo_locacao, l.data_locacao, l.total, l.status_atual, c.nome AS nome_cliente, fp.descricao AS forma_pagamento 
+        FROM Locacao l 
+        INNER JOIN cliente c ON l.codigo_cliente = c.codigo 
+        INNER JOIN forma_pagamento fp ON l.codigo_pagamento = fp.codigo WHERE l.codigo = $id;
+        ");
 
         if ( $pdo->rowCount() > 0) {
          return $pdo->fetch(\PDO::FETCH_ASSOC);
@@ -58,7 +62,15 @@ class Locacao extends Model{
 
     public function find(Entity $entity) : array{
         
-        $pdo =  $this->DB->execute("SELECT * FROM $this->table WHERE codigo LIKE '%{$entity->codigo}%' ");
+        $pdo =  $this->DB->execute("
+        
+        SELECT l.codigo AS codigo_locacao, l.data_locacao, l.total, l.status_atual, c.nome AS nome_cliente, fp.descricao AS forma_pagamento 
+        FROM Locacao l 
+        INNER JOIN cliente c ON l.codigo_cliente = c.codigo 
+        INNER JOIN forma_pagamento fp ON l.codigo_pagamento = fp.codigo WHERE c.nome LIKE '%{$entity->nome}%';
+        
+        
+        ");
 
         if ( $pdo->rowCount() > 0) {
          return $pdo->fetchAll(\PDO::FETCH_ASSOC);
@@ -89,6 +101,32 @@ class Locacao extends Model{
  
         return [];
        
+    }
+
+    public function getAllWithRelation(){
+
+        $sql = "SELECT l.codigo AS codigo_locacao, l.data_locacao, l.total, l.status_atual, c.nome AS nome_cliente, fp.descricao AS forma_pagamento 
+        FROM Locacao l 
+        INNER JOIN cliente c ON l.codigo_cliente = c.codigo 
+        INNER JOIN forma_pagamento fp ON l.codigo_pagamento = fp.codigo LIMIT 5;
+        ";
+        $pdo = $this->DB->execute($sql);
+        if ( $pdo->rowCount() > 0) {
+            return $pdo->fetchAll(\PDO::FETCH_ASSOC);
+           }
+    
+        return [];
+    }
+    public function statistic(){
+
+        $pdo =  $this->DB->execute("SELECT SUM(total) as 'montante' FROM {$this->table};");
+
+        if ( $pdo->rowCount() > 0) {
+         return $pdo->fetch(\PDO::FETCH_ASSOC);
+        }
+ 
+        return [];
+
     }
 
 
