@@ -133,7 +133,7 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label for="senha">Senha</label>
-                                    <input type="text" name="senha" required id="senha" value="<?= $dados_cliente['senha'] ?>" class="form-control">
+                                    <input type="text" name="senha" required id="senha" value="" class="form-control">
                                 </div>
                             </div>
 

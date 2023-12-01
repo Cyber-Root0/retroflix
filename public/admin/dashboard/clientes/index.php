@@ -70,7 +70,6 @@
                                             <th scope="col">Telefone</th>
                                             <th scope="col">Sexo</th>
                                             <th scope="col">Data de Nascimento</th>
-                                            <th scope="col">Senha</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
@@ -84,7 +83,6 @@
                                             <td><?= $cliente['telefone'] ?></td>
                                             <td><?= $cliente['sexo'] ?></td>
                                             <td><?= $cliente['data_nascimento'] ?></td>
-                                            <td><?= $cliente['senha'] ?></td>
                                             <td>
                                                 <a class="btn btn-outline-primary btn-sm ml-2" href="update.php?codigo=<?= $cliente['codigo'] ?>">
                                                     <i class="fas fa-edit"></i> Alterar
