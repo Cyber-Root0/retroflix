@@ -283,55 +283,9 @@ if (isset($_GET["pesquisa"])) {
 </style>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
-    <nav class="navbar navbar-light navbar-expand-md fixed-top bg-dark" id="mainNav">
-        <div class="container"><a class="navbar-brand text-light" href="#">RETROFLIX</a><button data-bs-toggle="collapse"
-                class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i
-                    class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto text-light">
-                    <li class="nav-item nav-link"></li>
-                    <li class="nav-item nav-link"><a class="nav-link" href="/cliente/cadastro/">CADASTRE-SE</a></li>
-                    <li class="nav-item nav-link"><a class="nav-link" href="/cliente/">ENTRAR</a></li>
-                    <div class="searchbar">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-                            <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-8" viewBox="0 0 40 40">
-                                <path
-                                    d="M16 32c8.835 0 16-7.165 16-16 0-8.837-7.165-16-16-16C7.162 0 0 7.163 0 16c0 8.835 7.163 16 16 16zm0-5.76c5.654 0 10.24-4.586 10.24-10.24 0-5.656-4.586-10.24-10.24-10.24-5.656 0-10.24 4.584-10.24 10.24 0 5.654 4.584 10.24 10.24 10.24zM28.156 32.8c-1.282-1.282-1.278-3.363.002-4.643 1.282-1.284 3.365-1.28 4.642-.003l6.238 6.238c1.282 1.282 1.278 3.363-.002 4.643-1.283 1.283-3.366 1.28-4.643.002l-6.238-6.238z"
-                                    fill-rule="evenodd" />
-                            </symbol>
-                            <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-3" viewBox="0 0 20 20">
-                                <path
-                                    d="M8.114 10L.944 2.83 0 1.885 1.886 0l.943.943L10 8.113l7.17-7.17.944-.943L20 1.886l-.943.943-7.17 7.17 7.17 7.17.943.944L18.114 20l-.943-.943-7.17-7.17-7.17 7.17-.944.943L0 18.114l.943-.943L8.113 10z"
-                                    fill-rule="evenodd" />
-                            </symbol>
-                        </svg>
 
-                        <form novalidate="novalidate" onsubmit=" true;" class="searchbox sbx-twitter" action="">
-                            <div role="search" class="sbx-twitter__wrapper">
-                                <input type="search" name="pesquisa" placeholder="Encontre seu filme" autocomplete="off"
-                                    required="required" class="sbx-twitter__input">
-                                <button type="submit" title="Submit your search query." class="sbx-twitter__submit">
-                                    <svg role="img" aria-label="Search">
-                                        <use xlink:href="#sbx-icon-search-8"></use>
-                                    </svg>
-                                </button>
-                                <button type="reset" title="Clear the search query." class="sbx-twitter__reset">
-                                    <svg role="img" aria-label="Reset">
-                                        <use xlink:href="#sbx-icon-clear-3"></use>
-                                    </svg>
-                                </button>
-                            </div>
-                        </form>
-                        <script type="text/javascript">
-                            document.querySelector('.searchbox [type="reset"]').addEventListener('click', function () { this.parentNode.querySelector('input').focus(); });
-                        </script>
+   <?php require("../cliente/componentes/nav-bar.php") ?>
 
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <div class="video-container">
         <iframe
             src="https://www.youtube.com/embed/2NKtkc7rffM?controls=0&autoplay=1&mute=1&playsinline=1&loop=1"></iframe>
