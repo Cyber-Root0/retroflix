@@ -1,4 +1,7 @@
 vendor
 composer.lock
 testes
-public/media/
+public/media/capas/*.jpg
+public/media/capas/*.png
+public/media/capas/*.webp
+public/media/capas/*.gif

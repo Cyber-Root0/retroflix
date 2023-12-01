@@ -20,6 +20,7 @@ Class ClienteModel extends Model{
 
     public function create(Entity $entity) : bool
     {
+        $entity->senha = hash('sha256', $entity->senha);
         $pdo =  $this->DB->execute("INSERT INTO $this->table (nome, email, senha, cpf, telefone, sexo, data_nascimento) VALUES ( 
             '{$entity->nome}',  
             '{$entity->email}', 
@@ -60,6 +61,7 @@ Class ClienteModel extends Model{
         return [];
     }
     public function update(Entity $entity) : bool{
+        $entity->senha = hash('sha256', $entity->senha);
         $pdo =  $this->DB->execute("UPDATE $this->table
             SET 
                 nome = '{$entity->nome}',

@@ -17,7 +17,7 @@ class Customer implements LoginInterface{
         
         $cliente = new Cliente();
         $cliente->email = $this->username;
-        $cliente->senha = $this->password;
+        $cliente->senha = hash('sha256',$this->password);
     
         $user = (new ClienteModel)->login($cliente);
        

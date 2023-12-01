@@ -21,8 +21,7 @@ class Admin implements LoginInterface{
         $this->password = $password;
         $administradorEntity = new AdministradorEntity();
         $administradorEntity->email = $this->username;
-        $administradorEntity->senha = $this->password;
-
+        $administradorEntity->senha = hash('sha256', $this->password);
         $user = (new Administrador)->login($administradorEntity);
        
         if (count($user) > 0) {

@@ -20,6 +20,7 @@ class Administrador extends Model{
     }
 
     public function create(Entity $entity) : bool{
+        $entity->senha = hash('sha256', $entity->senha);
         $pdo = $this->DB->execute("INSERT INTO $this->table (nome, email, senha, cpf, telefone, sexo, data_nascimento) 
             VALUES 
             ( '{$entity->nome}', '{$entity->email}', '{$entity->senha}', '{$entity->cpf}', '{$entity->telefone}', '{$entity->sexo}', '{$entity->data_nascimento->format('Y-m-d')}')"
@@ -52,6 +53,7 @@ class Administrador extends Model{
     }
 
     public function update(Entity $entity) : bool {
+        $entity->senha = hash('sha256', $entity->senha);
         $pdo =  $this->DB->execute("
         UPDATE $this->table 
         SET nome = '{$entity->nome}',  email = '{$entity->email}', senha = '{$entity->senha}',
