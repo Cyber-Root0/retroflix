@@ -89,7 +89,7 @@ CREATE TABLE `filme` (
   `codigo_diretor` int(11) DEFAULT NULL,
   `codigo_genero` int(11) DEFAULT NULL,
   `link` varchar(255) DEFAULT NULL,
-  `preco_diario` decimal(10,0) DEFAULT NULL
+  `preco_diario` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -102,8 +102,8 @@ CREATE TABLE `filmes_locacao` (
   `codigo_locacao` int(11) NOT NULL,
   `codigo_filme` int(11) NOT NULL,
   `numero_dias` int(11) DEFAULT NULL,
-  `preco_diario` decimal(10,0) DEFAULT NULL,
-  `subtotal` decimal(10,0) DEFAULT NULL
+  `preco_diario` decimal(10,2) DEFAULT NULL,
+  `subtotal` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -152,7 +152,7 @@ INSERT INTO `genero` (`codigo`, `nome`) VALUES
 CREATE TABLE `locacao` (
   `codigo` int(11) NOT NULL,
   `data_locacao` date DEFAULT NULL,
-  `total` decimal(10,0) DEFAULT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
   `status_atual` tinyint(1) DEFAULT NULL,
   `codigo_cliente` int(11) DEFAULT NULL,
   `codigo_pagamento` int(11) DEFAULT NULL
