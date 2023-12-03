@@ -28,7 +28,9 @@ class DB{
         try{
              $this->connection = new \PDO("mysql:host=".DB_IP.";dbname=".DB_NAME, DB_USERNAME, DB_PASSWORD);
         }catch(\PDOException $e){
-            echo $e->getMessage();
+            @session_start();
+            $_SESSION["last_error"] = $e;
+            throw new \PDOException("Erro no banco de dados", 500);
         }
 
     }
@@ -43,8 +45,9 @@ class DB{
         try{
             return $this->connection->query($sql);
         }catch(\PDOException $e){
-            echo $e->getMessage();
-            return false;
+            @session_start();
+            $_SESSION["last_error"] = $e;
+            header("Location: /errors/500.php");
         }
        
     }

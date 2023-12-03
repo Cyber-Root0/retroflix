@@ -214,8 +214,8 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item nav-link"></li>
-          <li class="nav-item nav-link"><a class="nav-link text-light" style="font-weight: 500;" href="/cliente/cadastro/">CADASTRE-SE</a></li>
-          <li class="nav-item nav-link"><a class="nav-link text-light" style="font-weight: 500;" href="/cliente/">ENTRAR</a></li>
+          <li class="nav-item nav-link"><a class="nav-link text-light" style="font-weight: 500;" href="/filmes/cart/">CARRINHO</a></li>
+          <li class="nav-item nav-link"><a class="nav-link text-light" style="font-weight: 500;" href="/cliente/minha-conta/">MINHA CONTA</a></li>
           <div class="searchbar">
             <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
               <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-8" viewBox="0 0 40 40">

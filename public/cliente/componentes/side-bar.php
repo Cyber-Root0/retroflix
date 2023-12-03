@@ -55,6 +55,11 @@ use Retroflix\lib\login\Customer;
                         </a>
                     </li>
                     <li class="nav-item w-100">
+                        <a href="/filmes/" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi bi-camera-reels"></i> <span class="ms-1 d-none d-sm-inline">Locar +Filmes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item w-100">
                         <a href="/cliente/minha-conta/logout/" class="nav-link align-middle px-0">
                             <i class="fs-4 bi bi bi-box-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Sair</span>
                         </a>

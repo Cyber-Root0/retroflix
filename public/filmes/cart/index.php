@@ -314,9 +314,7 @@ if (isset($_GET['add'])) {
                 <td class="preco_diario" data-preco="<?= $filme["preco_diario"] ?>"><?= $filme["preco_diario"] ?></td>
                 <td class="subtotal" data-subtotal="<?= $filme["subtotal"] ?>" >R$ <?= $filme["subtotal"] ?></td>
                 <td class="d-flex align-items-start" style="height: 106px;">
-                  <a class="btn btn-outline-primary btn-sm ml-2" href="update.php?codigo=">
-                    <i class="fas fa-edit"></i> Atualizar
-                  </a>
+            
                   <a type="button" class="btn btn-outline-danger btn-sm ml-2" href="delete.php?codigo=<?= $key ?>"><i class="fas fa-trash-alt"></i> Excluir</a>
                 </td>
               </tr>
