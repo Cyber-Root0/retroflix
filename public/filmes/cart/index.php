@@ -42,6 +42,7 @@ if (isset($_GET['add'])) {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700&amp;display=swap">
 <link rel="stylesheet" href="../../assets/fonts/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <style>
   body {
     overflow-x: hidden;
@@ -238,14 +239,42 @@ if (isset($_GET['add'])) {
   }
 </style>
 
+<script>
+  // JS Assíncrono p/ atualizar as infos - AJAX
+  /*
+  document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll('.btn-incremento, .btn-decremento');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const filmeId = this.getAttribute('data-id');
+        const acao = this.classList.contains('btn-increment') ? 'incremento' : 'decremento';
+
+        // atualizar a pagina
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `update.php?id=${filmeId}&acao=${acao}`, true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            location.reload();
+          }
+        };
+        xhr.send();
+      });
+    });
+  });
+
+  */
+</script>
+
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
   <?php require("../cart/../../cliente/componentes/nav-bar.php") ?>
   <!-- Body -->
   <div class="container" style="display: flex; gap: 20px; flex-wrap: wrap; width: 100vw;height: 100vh;justify-content: center;align-items: center;">
-    
-  
-  <!-- Tabelas -->
-  <div class="mt-0">
+
+
+    <!-- Tabelas -->
+    <div class="mt-0">
       <a class="btn btn-outline-primary mb-3" href="/filmes/">
         Voltar
       </a>
@@ -275,14 +304,15 @@ if (isset($_GET['add'])) {
                 <td scope="row"> <img height="80" width="80" src="/media/capas/<?= $filme["img"] ?>"> </td>
                 <td scope="row"><?= $filme["titulo"] ?></td>
                 <td class="">
+                  <!-- Botões de incremento e decremento -->
                   <div class="div d-flex">
-                    <button class="btn btn-primary" style="height: 40px;">-</button>
+                    <button class="btn btn-primary btn-decremento" data-id="<?= $key ?>" style="height: 40px;">-</button>
                     <input type="text" style="width:64px; margin: 0px 4px; height: 40px;" class="form-control w-10" name="" id="" value="<?= $filme["numero_dias"] ?>">
-                    <button class="btn btn-primary" style="height: 40px;">+</button>
+                    <button class="btn btn-primary btn-incremento" data-id="<?= $key ?>" style="height: 40px;">+</button>
                   </div>
                 </td>
-                <td><?= $filme["preco_diario"] ?></td>
-                <td>R$ <?= $filme["subtotal"] ?></td>
+                <td class="preco_diario" data-preco="<?= $filme["preco_diario"] ?>"><?= $filme["preco_diario"] ?></td>
+                <td class="subtotal" data-subtotal="<?= $filme["subtotal"] ?>" >R$ <?= $filme["subtotal"] ?></td>
                 <td class="d-flex align-items-start" style="height: 106px;">
                   <a class="btn btn-outline-primary btn-sm ml-2" href="update.php?codigo=">
                     <i class="fas fa-edit"></i> Atualizar
@@ -340,6 +370,7 @@ if (isset($_GET['add'])) {
       <p>Retroflix © 2023</p>
     </div>
   </footer>
+  <script src="/assets/js/btn-cart.js"></script>
 </body>
 
 </html>
